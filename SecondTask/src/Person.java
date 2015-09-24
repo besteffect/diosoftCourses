@@ -5,7 +5,7 @@
 * —оздайте Enum который характеризует экзмпл€р POJO класса (ƒолжность:DIRECTOR, DEVELOPER, QA) DONE
 * ƒобавьте Enum как поле в POJO DONE
 * Cгенерируйте equals/hashcode методы DONE
-* —оздайте Main класс, в main методе которого проведите сравнение экземпл€ров по ссылке и через метод equals и  по hashcode  NOT DONE
+* —оздайте Main класс, в main методе которого проведите сравнение экземпл€ров по ссылке и через метод equals и  по hashcode  DONE
  */
 public class Person {
 
@@ -14,9 +14,9 @@ public class Person {
     private final int age;
     private final JobTitle title; //enum
 
-    public Person(String firstName, String secoundName, int age, JobTitle title) { //automatically generated constructor
+    public Person(String firstName, String secondName, int age, JobTitle title) { //automatically generated constructor
         this.firstName = firstName;
-        this.secoundName = secoundName;
+        this.secoundName = secondName;
         this.age = age;
         this.title = title;
     }
@@ -25,7 +25,7 @@ public class Person {
         return firstName;
     }
 
-    public String getSecoundName() {
+    public String getSecondName() {
         return secoundName;
     }
 
