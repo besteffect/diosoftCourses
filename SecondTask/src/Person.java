@@ -1,37 +1,72 @@
 /**
  * Created by vsv on 9/22/2015.
- * Создайте POJO класс
-* Создайте POJO класс, поля которого являются final (Person)
-* Создайте Enum который характеризует экзмпляр POJO класса (Должность:DIRECTOR, DEVELOPER, QA)
-* Добавьте Enum как поле в POJO
-* Cгенерируйте equals/hashcode методы
-* Создайте Main класс, в main методе которого проведите сравнение экземпляров по ссылке и через метод equals и  по hashcode
+ * Создайте POJO класс DONE
+* Создайте POJO класс, поля которого являются final (Person) DONE
+* Создайте Enum который характеризует экзмпляр POJO класса (Должность:DIRECTOR, DEVELOPER, QA) DONE
+* Добавьте Enum как поле в POJO DONE
+* Cгенерируйте equals/hashcode методы DONE
+* Создайте Main класс, в main методе которого проведите сравнение экземпляров по ссылке и через метод equals и  по hashcode  NOT DONE
  */
 public class Person {
 
-    private String firstName;
-    public String getFirstName(){
-       return firstName;
-    }
-    public void setFirstName(String firstName){
-        this.firstName=firstName;
+    private final String firstName;
+    private final String secoundName;
+    private final int age;
+    private final JobTitle title; //enum
+
+    public Person(String firstName, String secoundName, int age, JobTitle title) { //automatically generated constructor
+        this.firstName = firstName;
+        this.secoundName = secoundName;
+        this.age = age;
+        this.title = title;
     }
 
-    private String secoundName;
-    public String getSecoundName(){
-        return  secoundName;
-    }
-    public void setSecoundName(String secoundName){
-        this.secoundName=secoundName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    private int age;
-    private int getAge(){
+    public String getSecoundName() {
+        return secoundName;
+    }
+
+    public int getAge() {
         return age;
     }
-    public void setAge(int age){
-        this.age=age;
+
+    public JobTitle getTitle() {
+        return title;
     }
 
-    private JobTitle title; //enum
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Person person = (Person) o;
+
+        if (age != person.age) return false;
+        if (!firstName.equals(person.firstName)) return false;
+        if (!secoundName.equals(person.secoundName)) return false;
+        return title == person.title;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstName.hashCode();
+        result = 31 * result + secoundName.hashCode();
+        result = 31 * result + age;
+        result = 31 * result + title.hashCode();
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "firstName='" + firstName + '\'' +
+                ", secoundName='" + secoundName + '\'' +
+                ", age=" + age +
+                ", title=" + title +
+                '}';
+    }
 }
