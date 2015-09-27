@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args){
         Person person1= new Person("Petro","Sodrugailo",40,JobTitle.DIRECTOR);
         Person person2=new Person("Pelageya","Chepurnenka",31,JobTitle.DEVELOPER);
+        //local code review (vtegza): not used @ 27.09.15
         Person person3 =new Person("Antoniy","Cheburashka", 31,JobTitle.QA);
     isEqual(person1,person2);
     }
