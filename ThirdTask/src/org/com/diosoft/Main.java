@@ -1,3 +1,4 @@
+package org.com.diosoft;
 import java.util.Arrays;
 
 /**
@@ -22,7 +23,6 @@ public class Main {
         int[] outerUnionLeftArray={1,5,4,23,65,32,78};
         int[] outerUnionRightArray={3,5,24,4,1,2,34,45,32,5};
         int[] outerUnionExpectedArray={23,65,78,3,24,2,34,45};
-
 
     }
 
@@ -65,7 +65,6 @@ public class Main {
 
         Main main = new Main();
         int[] returnValue = main.leftUnion(leftArray, rightArray);
-
         System.out.println("ReturnValue: " + Arrays.toString(returnValue));
         System.out.println("ExpectedArrays: " + Arrays.toString(expectedArrays));
     }
@@ -89,6 +88,11 @@ public class Main {
         return resultArray;
     }
 
+    public static  int[] mergeWithoutDuplicates(int[] leftArray, int[] rightArray){
+        int[] resultArray = new int[0];
+        return resultArray;
+    }
+
     public static int[] innerUnion(int[] leftArray, int[] rightArray){
         int[] resultArray = new int[0];
         return resultArray;
@@ -98,5 +102,6 @@ public class Main {
         int[]resultArray=new int[0];
         return resultArray;
     }
+
 
 }
