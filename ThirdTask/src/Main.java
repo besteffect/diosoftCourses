@@ -15,6 +15,7 @@ public class Main {
         leftUnionTestLeftArrayIsEmpty();
         leftUnionTestLeftArrayIsNull();
 
+        //local code review (vtegza): not used @ 27.09.15
         int[] innerUnionLeftArray={1,5,4,23,65,32,78};
         int[] innerUnionRightArray={3,5,24,4,1,2,34,45,32,5};
         int[] innerUnionExpectedArray={5,4,32,1};
@@ -34,6 +35,7 @@ public class Main {
         System.out.println("RightArray: " + Arrays.toString(rightArray));
 
         Main main =new Main();
+        //local code review (vtegza): actually you are calling static method @ 27.09.15
         int[] returnValue=main.leftUnion(leftArray,rightArray);
 
         System.out.println("ReturnValue: " + Arrays.toString(returnValue));
@@ -70,6 +72,7 @@ public class Main {
         System.out.println("ExpectedArrays: " + Arrays.toString(expectedArrays));
     }
 
+    //local code review (vtegza): should be not static @ 27.09.15
     public static int[] leftUnion(int[] leftArray, int[] rightArray)
     {
         int[] buffArray=Arrays.copyOf(leftArray, leftArray.length+rightArray.length);
