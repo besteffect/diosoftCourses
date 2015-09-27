@@ -45,41 +45,48 @@ public class ArrayUtils {
         System.out.println("RightArray: " + Arrays.toString(rightArray));
 
         ArrayUtils main = new ArrayUtils();
-        int[] returnValue = main.leftUnion(leftArray, rightArray);
-        System.out.println("ReturnValue: " + Arrays.toString(returnValue));
-        System.out.println("ExpectedArrays: " + Arrays.toString(expectedArrays));
+        try {
+            int[] returnValue = main.leftUnion(leftArray, rightArray);
+            System.out.println("ReturnValue: " + Arrays.toString(returnValue));
+            System.out.println("ExpectedArrays: " + Arrays.toString(expectedArrays));
+
+            System.out.println("LeftUnionTestLeftArrayIsEmpty test failed");
+        } catch (NullPointerException e) {
+            System.out.println("leftUnionTestLeftArrayIsEmpty test passed");
+        }
+
     }
 
     //local code review (vtegza): should be not static @ 27.09.15
     public int[] leftUnion(int[] leftArray, int[] rightArray) {
         int[] buffArray = Arrays.copyOf(leftArray, leftArray.length + rightArray.length);
-        int countOfFoundElementsinRightArray = 0;
+        int countOfFoundElementsInRightArray = 0;
 
         for (int rightArrayElement : rightArray) {
             for (int leftArrayElement : leftArray) {
                 if (rightArrayElement == leftArrayElement) {
-                    buffArray[leftArray.length + countOfFoundElementsinRightArray] = rightArrayElement;
-                    countOfFoundElementsinRightArray++;
+                    buffArray[leftArray.length + countOfFoundElementsInRightArray] = rightArrayElement;
+                    countOfFoundElementsInRightArray++;
                 }
             }
         }
-        System.out.println("Count of found elements is: " + countOfFoundElementsinRightArray);
+        System.out.println("Count of found elements is: " + countOfFoundElementsInRightArray);
         System.out.println("BuffArray after search is: " + Arrays.toString(buffArray));
-        int[] resultArray = Arrays.copyOf(buffArray, leftArray.length + countOfFoundElementsinRightArray);
+        int[] resultArray = Arrays.copyOf(buffArray, leftArray.length + countOfFoundElementsInRightArray);
         return resultArray;
     }
 
-    public static int[] mergeWithoutDuplicates(int[] leftArray, int[] rightArray) {
+    public int[] mergeWithoutDuplicates(int[] leftArray, int[] rightArray) {
         int[] resultArray = new int[0];
         return resultArray;
     }
 
-    public static int[] innerUnion(int[] leftArray, int[] rightArray) {
+    public int[] innerUnion(int[] leftArray, int[] rightArray) {
         int[] resultArray = new int[0];
         return resultArray;
     }
 
-    public static int[] outerUnion(int[] leftArray, int[] rightArray) {
+    public int[] outerUnion(int[] leftArray, int[] rightArray) {
         int[] resultArray = new int[0];
         return resultArray;
     }
