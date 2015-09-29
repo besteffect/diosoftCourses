@@ -1,4 +1,4 @@
-package hw3.org.com.diosoft;
+package org.com.diosoft.hw3;
 
 import java.util.Arrays;
 
@@ -17,7 +17,7 @@ public class Main {
         int[] LeftUnionExpectedArray = {1, 5, 4, 23, 65, 32, 78, 5, 4, 1, 32, 5};
         System.out.println("Condition. Left union Expected array " + Arrays.toString(LeftUnionExpectedArray));
         int[] leftUnionResult = obj.leftUnion(leftUnionLeftArray, LeftUnionRightArray);
-        System.out.println("LeftUnion leftUnionResult " + Arrays.toString(leftUnionResult));
+        System.out.println("LeftUnionResult " + Arrays.toString(leftUnionResult));
 
         obj.leftUnionTestPositive();
         obj.leftUnionTestLeftArrayIsEmpty();
@@ -30,6 +30,9 @@ public class Main {
         System.out.println("Condition. Merge union Right Array is " + Arrays.toString(mergeUnionRightArray));
         int[] mergeUnionExpectedArray = {1, 5, 4, 23, 65, 32, 78, 3, 24, 54, 2, 34, 45};
         System.out.println("Condition. Merge union Expected Array is " + Arrays.toString(mergeUnionExpectedArray));
+        int[] mergeUnionResult = obj.mergeWithoutDuplicates(mergeUnionLeftArray, mergeUnionRightArray);
+        System.out.println("MergeUnionResult: " + Arrays.toString(mergeUnionResult));
+
 //        obj.mergeUnionTestPositive();
 //        obj.mergeUnionTestLeftArrayIsEmpty();
 //        obj.mergeUnionTestArrayIsNull();

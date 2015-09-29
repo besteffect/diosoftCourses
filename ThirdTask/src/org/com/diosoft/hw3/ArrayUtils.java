@@ -1,4 +1,4 @@
-package hw3.org.com.diosoft;
+package org.com.diosoft.hw3;
 
 import java.util.Arrays;
 
@@ -49,7 +49,7 @@ public class ArrayUtils {
 
             System.out.println("LeftUnionTestLeftArrayIsEmpty test failed");
         } catch (NullPointerException e) {
-            System.out.println("leftUnionTestLeftArrayIsEmpty test passed");
+            System.out.println("LeftUnionTestLeftArrayIsEmpty test passed");
         }
 
     }
@@ -73,11 +73,23 @@ public class ArrayUtils {
     }
 
     public int[] mergeWithoutDuplicates(int[] leftArray, int[] rightArray) {
-        int[] buffArray = Arrays.copyOf(leftArray, leftArray.length + rightArray.length);
+        int[] buffArray = Arrays.copyOf(leftArray,leftArray.length+rightArray.length);
+        int index = leftArray.length;
 
+        for (int rightArrayElement : rightArray) {
+            boolean isUnique = true;
 
-        int[] resultArray = new int[0];
-        return resultArray;
+            for (int leftArrayElement : leftArray) {
+                if (rightArrayElement==leftArrayElement){
+                    isUnique = false;
+                }
+            }
+            if (isUnique){
+                buffArray[index] = rightArrayElement;
+                index++;
+            }
+        }
+        return Arrays.copyOf(buffArray,index);
     }
 
 
