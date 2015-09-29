@@ -1,4 +1,4 @@
-package org.com.diosoft;
+package hw3.org.com.diosoft;
 
 /**
  * Created by vsv on 9/28/2015.

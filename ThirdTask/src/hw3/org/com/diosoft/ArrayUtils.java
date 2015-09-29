@@ -1,4 +1,4 @@
-package org.com.diosoft;
+package hw3.org.com.diosoft;
 
 import java.util.Arrays;
 
@@ -10,15 +10,12 @@ public class ArrayUtils {
         int[] leftArray = {1, 5, 4, 23, 65, 32, 78};
         int[] rightArray = {3, 5, 24, 4, 1, 2, 34, 45, 32, 5};
         int[] expectedArrays = {1, 5, 4, 23, 65, 32, 78, 5, 4, 1, 32, 5};
-        System.out.println("LeftArray: " + Arrays.toString(leftArray));
-        System.out.println("RightArray: " + Arrays.toString(rightArray));
-
         ArrayUtils arrayUtils = new ArrayUtils();
         //local code review (vtegza): actually you are calling static method @ 27.09.15 Vitalii: fixed
         int[] returnValue = arrayUtils.leftUnion(leftArray, rightArray);
 
-        System.out.println("ReturnValue: " + Arrays.toString(returnValue));
-        System.out.println("ExpectedArrays: " + Arrays.toString(expectedArrays));
+        System.out.println("ReturnValue leftUnionTestPositive: " + Arrays.toString(returnValue));
+        System.out.println("ExpectedArray leftUnionTestPositive: " + Arrays.toString(expectedArrays));
     }
 
     public void leftUnionTestLeftArrayIsEmpty() {
@@ -26,14 +23,14 @@ public class ArrayUtils {
         int[] rightArray = {3, 5, 24, 4, 1, 2, 34, 45, 32, 5};
         int[] expectedArrays = {};
 
-        System.out.println("LeftArray: " + Arrays.toString(leftArray));
-        System.out.println("RightArray: " + Arrays.toString(rightArray));
+        System.out.println("Start value for LeftArray at leftUnionTestLeftArrayIsEmpty: " + Arrays.toString(leftArray));
+        System.out.println("Start value for RightArray at leftUnionTestLeftArrayIsEmpty: " + Arrays.toString(rightArray));
 
         ArrayUtils main = new ArrayUtils();
         int[] returnValue = main.leftUnion(leftArray, rightArray);
 
-        System.out.println("ReturnValue: " + Arrays.toString(returnValue));
-        System.out.println("ExpectedArrays: " + Arrays.toString(expectedArrays));
+        System.out.println("LeftUnionTestLeftArrayIsEmpty ReturnValue: " + Arrays.toString(returnValue));
+        System.out.println("LeftUnionTestLeftArrayIsEmpty ExpectedArrays: " + Arrays.toString(expectedArrays));
     }
 
     public void leftUnionTestLeftArrayIsNull() {
@@ -41,14 +38,14 @@ public class ArrayUtils {
         int[] rightArray = {3, 5, 24, 4, 1, 2, 34, 45, 32, 5};
         int[] expectedArrays = {};
 
-        System.out.println("LeftArray: " + Arrays.toString(leftArray));
-        System.out.println("RightArray: " + Arrays.toString(rightArray));
+        System.out.println("Left Union LeftArray leftUnionTestLeftArrayIsNull: " + Arrays.toString(leftArray));
+        System.out.println("Left Union RightArray leftUnionTestLeftArrayIsNull: " + Arrays.toString(rightArray));
 
         ArrayUtils main = new ArrayUtils();
         try {
             int[] returnValue = main.leftUnion(leftArray, rightArray);
-            System.out.println("ReturnValue: " + Arrays.toString(returnValue));
-            System.out.println("ExpectedArrays: " + Arrays.toString(expectedArrays));
+            System.out.println("ReturnValue leftUnionTestLeftArrayIsNull: " + Arrays.toString(returnValue));
+            System.out.println("ExpectedArrays leftUnionTestLeftArrayIsNull: " + Arrays.toString(expectedArrays));
 
             System.out.println("LeftUnionTestLeftArrayIsEmpty test failed");
         } catch (NullPointerException e) {
@@ -71,15 +68,19 @@ public class ArrayUtils {
             }
         }
         System.out.println("Count of found elements is: " + countOfFoundElementsInRightArray);
-        System.out.println("BuffArray after search is: " + Arrays.toString(buffArray));
         int[] resultArray = Arrays.copyOf(buffArray, leftArray.length + countOfFoundElementsInRightArray);
         return resultArray;
     }
 
     public int[] mergeWithoutDuplicates(int[] leftArray, int[] rightArray) {
+        int[] buffArray = Arrays.copyOf(leftArray, leftArray.length + rightArray.length);
+
+
         int[] resultArray = new int[0];
         return resultArray;
     }
+
+
 
     public int[] innerUnion(int[] leftArray, int[] rightArray) {
         int[] resultArray = new int[0];

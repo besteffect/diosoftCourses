@@ -1,4 +1,4 @@
-package org.com.diosoft;
+package hw3.org.com.diosoft;
 
 import java.util.Comparator;
 
