@@ -93,18 +93,27 @@ public class ArrayUtils {
     }
 
     public int[] innerUnion(int[] leftArray, int[] rightArray) {
-        int index =0;
+        int index = 0;
         int[] buffArray = new int[leftArray.length];
         for (int i = 0; i < leftArray.length; i++) {
             for (int j = 0; j < rightArray.length; j++) {
                 if (leftArray[i] == rightArray[j]) {
-                    buffArray[index]=leftArray[i];
-                    index++;
-                    System.out.println("Common Number: " + leftArray[i]);
+
+                    boolean isUnique = true;
+                    for (int k = 0; k < index; k++) {
+                        if (buffArray[k] == leftArray[i]) {
+                            isUnique = false;
+                        }
+                    }
+                    if (isUnique) {
+                        buffArray[index] = leftArray[i];
+                        index++;
+                        System.out.println("Common Number: " + leftArray[i]);
+                    }
                 }
             }
         }
-       int[] resultArray=Arrays.copyOf(buffArray,index);
+        int[] resultArray = Arrays.copyOf(buffArray, index);
         return resultArray;
     }
 
