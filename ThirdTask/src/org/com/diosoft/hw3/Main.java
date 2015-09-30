@@ -32,7 +32,6 @@ public class Main {
         System.out.println("Condition. Merge union Expected Array is " + Arrays.toString(mergeUnionExpectedArray));
         int[] mergeUnionResult = obj.mergeWithoutDuplicates(mergeUnionLeftArray, mergeUnionRightArray);
         System.out.println("MergeUnionResult: " + Arrays.toString(mergeUnionResult));
-
 //        obj.mergeUnionTestPositive();
 //        obj.mergeUnionTestLeftArrayIsEmpty();
 //        obj.mergeUnionTestArrayIsNull();
@@ -40,6 +39,8 @@ public class Main {
         int[] innerUnionLeftArray = {1, 5, 4, 23, 65, 32, 78};
         int[] innerUnionRightArray = {3, 5, 24, 4, 1, 2, 34, 45, 32, 5};
         int[] innerUnionExpectedArray = {5, 4, 32, 1};
+        int[] innerUnionResult=obj.innerUnion(leftUnionLeftArray, LeftUnionRightArray);
+        System.out.println("InnerUnionResult: "+ Arrays.toString(innerUnionResult));
 //        obj.innerUnionTestPositive();
 //        obj.innerUnionTestLeftArrayIsEmpty();
 //        obj.innerUnionTestLeftArrayIsNull();

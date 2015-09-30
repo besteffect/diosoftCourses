@@ -73,31 +73,41 @@ public class ArrayUtils {
     }
 
     public int[] mergeWithoutDuplicates(int[] leftArray, int[] rightArray) {
-        int[] buffArray = Arrays.copyOf(leftArray,leftArray.length+rightArray.length);
+        int[] buffArray = Arrays.copyOf(leftArray, leftArray.length + rightArray.length);
         int index = leftArray.length;
 
         for (int rightArrayElement : rightArray) {
             boolean isUnique = true;
 
             for (int leftArrayElement : leftArray) {
-                if (rightArrayElement==leftArrayElement){
+                if (rightArrayElement == leftArrayElement) {
                     isUnique = false;
                 }
             }
-            if (isUnique){
+            if (isUnique) {
                 buffArray[index] = rightArrayElement;
                 index++;
             }
         }
-        return Arrays.copyOf(buffArray,index);
+        return Arrays.copyOf(buffArray, index);
     }
-
-
 
     public int[] innerUnion(int[] leftArray, int[] rightArray) {
-        int[] resultArray = new int[0];
+        int index =0;
+        int[] buffArray = new int[leftArray.length];
+        for (int i = 0; i < leftArray.length; i++) {
+            for (int j = 0; j < rightArray.length; j++) {
+                if (leftArray[i] == rightArray[j]) {
+                    buffArray[index]=leftArray[i];
+                    index++;
+                    System.out.println("Common Number: " + leftArray[i]);
+                }
+            }
+        }
+       int[] resultArray=Arrays.copyOf(buffArray,index);
         return resultArray;
     }
+
 
     public int[] outerUnion(int[] leftArray, int[] rightArray) {
         int[] resultArray = new int[0];
