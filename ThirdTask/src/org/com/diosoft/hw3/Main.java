@@ -48,6 +48,8 @@ public class Main {
         int[] outerUnionLeftArray = {1, 5, 4, 23, 65, 32, 78};
         int[] outerUnionRightArray = {3, 5, 24, 4, 1, 2, 34, 45, 32, 5};
         int[] outerUnionExpectedArray = {23, 65, 78, 3, 24, 2, 34, 45};
+        int[] outerUnionResult=obj.outerUnion(leftUnionLeftArray, LeftUnionRightArray);
+        System.out.println("OuterUnionResult: "+ Arrays.toString(outerUnionResult));
 //        obj.outerUnionTestPositive();
 //        obj.outerUnionTestLeftArrayIsEmpty();
 //        obj.outerUnionTestLeftArrayIsNull();
