@@ -2,9 +2,6 @@ package org.com.diosoft.hw3;
 
 import java.util.Arrays;
 
-/**
- * Created by Smart on 9/27/2015.
- */
 public class ArrayUtils {
 
 
@@ -20,7 +17,7 @@ public class ArrayUtils {
                 }
             }
         }
-        System.out.println("Count of found elements is: " + countOfFoundElementsInRightArray);
+       // System.out.println("Count of found elements for left union is: " + countOfFoundElementsInRightArray);
         int[] resultArray = Arrays.copyOf(buffArray, leftArray.length + countOfFoundElementsInRightArray);
         return resultArray;
     }
@@ -58,7 +55,7 @@ public class ArrayUtils {
                     if (isUnique) {
                         buffArray[index] = leftArray[i];
                         index++;
-                        System.out.println("Common Number: " + leftArray[i]);
+                       // System.out.println("Common Number: " + leftArray[i]);
                     }
                 }
             }
@@ -82,7 +79,7 @@ public class ArrayUtils {
             if (!isUnique) {
                 buffArray[index] = leftArray[i];//  adding elements to the first part of buffArray
                 index++; //number of elements in first part of array
-                System.out.println("Outer union. Result from left array is: " + leftArray[i]);
+                //System.out.println("Outer union. Result from left array is: " + leftArray[i]);
             }
         }
         for (int j = 0; j < rightArray.length; j++) {
@@ -93,7 +90,7 @@ public class ArrayUtils {
                 }
             }
             if(!isUnique){
-                System.out.println("Outer union. Result from right array is: " + rightArray[j]);
+                //System.out.println("Outer union. Result from right array is: " + rightArray[j]);
                 buffArray[index] = rightArray[j];//adding elements to the second part of buffArray
                 index++; //number of elements in second part of array
             }

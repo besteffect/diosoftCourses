@@ -1,8 +1,5 @@
 package org.com.diosoft.hw3;
 
-/**
- * Created by vsv on 9/28/2015.
- */
 public class People {
     private String firstName;
     private String secondName;

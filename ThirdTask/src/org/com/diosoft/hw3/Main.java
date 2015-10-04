@@ -2,9 +2,6 @@ package org.com.diosoft.hw3;
 
 import java.util.Arrays;
 
-/**
- * Created by Smart on 9/27/2015.
- */
 public class Main {
     public static void main(String[] args) {
         ArrayUtils method = new ArrayUtils();
@@ -37,23 +34,17 @@ public class Main {
         tests.mergeUnionTestLeftArrayIsNull();
 
 //Inner union array and tests calls
-        int[] innerUnionLeftArray = {1, 5, 4, 23, 65, 32, 78};
-        int[] innerUnionRightArray = {3, 5, 24, 4, 1, 2, 34, 45, 32, 5};
-        int[] innerUnionExpectedArray = {5, 4, 32, 1};
         int[] innerUnionResult = method.innerUnion(leftUnionLeftArray, LeftUnionRightArray);
         System.out.println("InnerUnionResult: " + Arrays.toString(innerUnionResult));
-//        tests.innerUnionTestPositive();
-//        tests.innerUnionTestLeftArrayIsEmpty();
-//        tests.innerUnionTestLeftArrayIsNull();
+        tests.innerUnionTestPositive();
+        tests.innerUnionTestLeftArrayIsEmpty();
+        tests.innerUnionTestLeftArrayIsNull();
 
 //Outer union array and tests calls
-        int[] outerUnionLeftArray = {1, 5, 4, 23, 65, 32, 78};
-        int[] outerUnionRightArray = {3, 5, 24, 4, 1, 2, 34, 45, 32, 5};
-        int[] outerUnionExpectedArray = {23, 65, 78, 3, 24, 2, 34, 45};
         int[] outerUnionResult = method.outerUnion(leftUnionLeftArray, LeftUnionRightArray);
         System.out.println("OuterUnionResult: " + Arrays.toString(outerUnionResult));
-//        tests.outerUnionTestPositive();
-//        tests.outerUnionTestLeftArrayIsEmpty();
-//        tests.outerUnionTestLeftArrayIsNull();
+        tests.outerUnionTestPositive();
+        tests.outerUnionTestLeftArrayIsEmpty();
+        tests.outerUnionTestLeftArrayIsNull();
     }
 }
