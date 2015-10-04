@@ -2,6 +2,7 @@ package org.com.diosoft.hw3;
 
 import java.util.Arrays;
 
+//local code review (vtegza): creat junit tests @ 04.10.15
 public class ArraysSimpleTests {
 
     public void leftUnionTestPositive() {
