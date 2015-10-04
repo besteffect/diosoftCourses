@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayUtils method = new ArrayUtils();
         ArraysSimpleTests tests = new ArraysSimpleTests();
+        PersonTests personTests = new PersonTests();
 
 //Left Union array and tests calls
         int[] leftUnionLeftArray = {1, 5, 4, 23, 65, 32, 78};
@@ -19,6 +20,8 @@ public class Main {
         tests.leftUnionTestPositive();
         tests.leftUnionTestLeftArrayIsEmpty();
         tests.leftUnionTestLeftArrayIsNull();
+
+
 
 //Merge union array and tests calls
         int[] mergeUnionLeftArray = {1, 5, 4, 23, 65, 32, 78};
@@ -46,5 +49,24 @@ public class Main {
         tests.outerUnionTestPositive();
         tests.outerUnionTestLeftArrayIsEmpty();
         tests.outerUnionTestLeftArrayIsNull();
+
+//Persons
+        Person person1 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
+        Person person2 = new Person("Pelageya", "Chepurnenka", 31,2, JobTitleEnum.DEVELOPER);
+        Person person3 = new Person("Antoniy", "Cheburashka", 31,3, JobTitleEnum.QA);
+        Person person4 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
+        PersonUtils.isEqual(person1,person2);
+        PersonUtils.isEqual(person1,person1);
+        Person[] group1 = {person1,person2,person3};
+        Person[] group2 = {person2,person1,person3};
+        PersonUtils.isEqual(group1, group2);
+//Person equals tests
+        personTests.verifyIsPersonEqual(person1,person4,true);
+        personTests.verifyIsPersonNotEqual(person1,person2,false);
+        personTests.verifyIsGroupPersonEqual();
+
+
+
     }
+
 }

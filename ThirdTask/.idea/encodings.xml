@@ -4,7 +4,8 @@
     <file url="file://$PROJECT_DIR$/src/org/com/diosoft/hw3/ArrayUtils.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/org/com/diosoft/hw3/ArraysSimpleTests.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/org/com/diosoft/hw3/Main.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/com/diosoft/hw3/People.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/com/diosoft/hw3/PeopleComparator.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/org/com/diosoft/hw3/Person.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/org/com/diosoft/hw3/PersonComparator.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/org/com/diosoft/hw3/PersonUtils.java" charset="UTF-8" />
   </component>
 </project>
