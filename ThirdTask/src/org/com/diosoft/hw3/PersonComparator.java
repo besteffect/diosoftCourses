@@ -2,7 +2,7 @@ package org.com.diosoft.hw3;
 
 import java.util.Comparator;
 
-public abstract class PersonComparator implements Comparator<Person> {
+public class PersonComparator implements Comparator<Person> {
     public int compare(Person p1, Person p2){
         Integer p1Id = p1.getId();
         Integer p2Id = p2.getId();
