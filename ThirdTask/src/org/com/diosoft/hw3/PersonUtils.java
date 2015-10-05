@@ -23,4 +23,84 @@ public class PersonUtils {
             System.out.println("Group1 is not equal to group2");
         return false;
     }
+
+    public Person[] mergeWithoutDuplicates(Person[] group1, Person[] group2) {
+        if(group1==null) return null;
+        else if (group2.length==0) return group1;
+        Person[] buffArray = Arrays.copyOf(group1, group1.length + group2.length);
+        int index = group1.length;
+        for (Person rightArrayElement : group2) {
+            boolean isUnique = true;
+            for (Person leftArrayElement : group1) {
+                if (leftArrayElement.equals(rightArrayElement)){
+                    isUnique = false;
+                }
+            }
+            if (isUnique) {
+                buffArray[index] = rightArrayElement;
+                index++;
+            }
+        }
+        return Arrays.copyOf(buffArray, index);
+    }
+
+    public Person[] innerUnion(Person[] group1, Person[] group2) {
+        if (group1 == null || group2 == null) return null;
+        int index = 0;
+        Person[] buffArray = new Person[group1.length];
+        for (int i = 0; i < group1.length; i++) {
+            for (int j = 0; j < group2.length; j++) {
+                if (group1[i] == group2[j]) {
+                    boolean isUnique = true;
+                    for (int k = 0; k < index; k++) {
+                        if (buffArray[k] == group1[i]) {
+                            isUnique = false;
+                        }
+                    }
+                    if (isUnique) {
+                        buffArray[index] = group1[i];
+                        index++;
+                    }
+                }
+            }
+        }
+        Person[] resultArray = Arrays.copyOf(buffArray, index);
+        return resultArray;
+    }
+
+    public Person[] outerUnion(Person[] group1, Person[] group2) {
+        Person[] buffArray = new Person[group1.length+group2.length];
+        int index = 0;
+        boolean isUnique=false;
+        for (int i = 0; i < group1.length; i++) {
+            isUnique = false;
+            for (int j = 0; j < group2.length; j++) {
+                if (group1[i] == group2[j]) {
+                    isUnique = true;
+                }
+            }
+            if (!isUnique) {
+                buffArray[index] = group1[i];
+                index++;
+            }
+        }
+        for (int j = 0; j < group2.length; j++) {
+            isUnique = false;
+            for (int i = 0; i < group1.length; i++) {
+                if (group2[j] == group1[i]) {
+                    isUnique = true;
+                }
+            }
+            if(!isUnique){
+                buffArray[index] = group2[j];
+                index++;
+            }
+        }
+        Person[]resultArray=Arrays.copyOf(buffArray,index); //  (length = index)
+        return resultArray;
+    }
+
+
+
+
 }

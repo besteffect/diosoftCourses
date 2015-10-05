@@ -25,7 +25,8 @@ public class PersonTests {
     }
 
 
-    public void verifyIsGroupPersonEqual() { //this test must use comparator
+    public void mergeUnionTestPositive() {
+
 
     }
 

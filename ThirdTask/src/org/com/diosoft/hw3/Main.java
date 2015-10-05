@@ -7,6 +7,7 @@ public class Main {
         ArrayUtils method = new ArrayUtils();
         ArraysSimpleTests tests = new ArraysSimpleTests();
         PersonTests personTests = new PersonTests();
+        PersonUtils personUtils = new PersonUtils();
 
 //Left Union array and tests calls
         int[] leftUnionLeftArray = {1, 5, 4, 23, 65, 32, 78};
@@ -51,6 +52,7 @@ public class Main {
         tests.outerUnionTestLeftArrayIsNull();
 
 //Persons
+        //creating persons and groups of persons
         Person person1 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
         Person person2 = new Person("Pelageya", "Chepurnenka", 31,2, JobTitleEnum.DEVELOPER);
         Person person3 = new Person("Antoniy", "Cheburashka", 31,3, JobTitleEnum.QA);
@@ -59,14 +61,26 @@ public class Main {
         PersonUtils.isEqual(person1,person1);
         Person[] group1 = {person1,person2,person3};
         Person[] group2 = {person2,person1,person3};
+        Person[] group3={person4, person3,person2};
+
         PersonUtils.isEqual(group1, group2);
+
 //Person equals tests
-        personTests.verifyIsPersonEqual(person1,person4,true);
-        personTests.verifyIsPersonNotEqual(person1,person2,false);
-        personTests.verifyIsGroupPersonEqual();
+        personTests.verifyIsPersonEqual(person1, person4, true);
+        personTests.verifyIsPersonNotEqual(person1, person2, false);
 
+        //calling PersonUtils basic methods
+        personUtils.mergeWithoutDuplicates(group1, group2);
+        Person [] mergeWithoutDuplicatesResult=personUtils.mergeWithoutDuplicates(group1,group2);
+        System.out.println("MergeWithoutDuplicates Method result" + Arrays.toString(mergeWithoutDuplicatesResult));
 
+        personUtils.innerUnion(group1, group2);
+        Person [] innerUnionPersonResult=personUtils.innerUnion(group1,group2);
+        System.out.println("Inner Union Method result" + Arrays.toString(innerUnionPersonResult));
 
+        personUtils.outerUnion(group1, group2);
+        Person [] outerUnionPersonResult=personUtils.innerUnion(group1,group2);
+        System.out.println("Outer Union Method result" + Arrays.toString(outerUnionPersonResult));
     }
 
 }
