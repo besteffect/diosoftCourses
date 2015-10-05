@@ -24,6 +24,23 @@ public class PersonTests {
         }
     }
 
+    public void verifyGroupsAreEquals() { //comparing not sorted groups using Comparator
+        Person person1 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
+        Person person2 = new Person("Pelageya", "Chepurnenka", 31, 2, JobTitleEnum.DEVELOPER);
+        Person person3 = new Person("Antoniy", "Cheburashka", 31, 3, JobTitleEnum.QA);
+
+        Person[] group1 = {person1, person2, person3};
+        Person[] group2 = {person3, person1, person2};
+        Arrays.sort(group2, new PersonComparator()); // previously group sorting is required here for method isEqual to work properly
+        Arrays.sort(group1, new PersonComparator());
+        boolean actualResult = PersonUtils.isEqual(group1, group2);
+        if (actualResult == true) {
+            System.out.println("Group compare test passed");
+        } else {
+            System.out.println("Group compare test failed");
+        }
+    }
+
     public void mergeUnionTestPositive() {
         Person person1 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
         Person person2 = new Person("Pelageya", "Chepurnenka", 31, 2, JobTitleEnum.DEVELOPER);
@@ -33,7 +50,6 @@ public class PersonTests {
         Person[] group2 = {person2, person1, person4};
 
         Person[] expectedGroup = {person1,person2}; // expected result is here
-        Arrays.sort(expectedGroup, new PersonComparator());
         System.out.println("Merge union positive person test expected group is " + Arrays.toString(expectedGroup));
         PersonUtils main = new PersonUtils();
         Person[] returnGroup = main.mergeWithoutDuplicates(group1, group2);

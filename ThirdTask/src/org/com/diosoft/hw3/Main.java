@@ -69,6 +69,7 @@ public class Main {
         personTests.verifyIsPersonEqual(person1, person4, true);
         personTests.verifyIsPersonNotEqual(person1, person2, false);
 
+        personTests.verifyGroupsAreEquals();
         personTests.mergeUnionTestPositive();
 
         //calling PersonUtils basic methods
