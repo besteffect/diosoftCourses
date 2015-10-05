@@ -36,7 +36,7 @@ public class PersonTests {
         Arrays.sort(expectedGroup, new PersonComparator());
         System.out.println("Merge union positive person test expected group is " + Arrays.toString(expectedGroup));
         PersonUtils main = new PersonUtils();
-        Person[] returnGroup = main.innerUnion(group1, group2);
+        Person[] returnGroup = main.mergeWithoutDuplicates(group1, group2);
         System.out.println("Merge union positive person test returned group is " + Arrays.toString(returnGroup));
     }
 
