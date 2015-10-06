@@ -57,11 +57,11 @@ public class ArraysSimpleTests {
     public void mergeUnionTestLeftArrayIsEmpty() {
         int[] leftArray = {};
         int[] rightArray = {3, 5, 24, 54, 1, 2, 34, 45, 32};
-        int[] expectedArrays = {};
+        int[] expectedArrays = {3, 5, 24, 54, 1, 2, 34, 45, 32};
         ArrayUtils main = new ArrayUtils();
         int[] returnValue = main.mergeWithoutDuplicates(leftArray, rightArray);
-        System.out.println("MergeUnionTestLeftArrayIsEmpty ReturnValue: " + Arrays.toString(returnValue));
-        System.out.println("MergeUnionTestLeftArrayIsEmpty ExpectedArrays: " + Arrays.toString(expectedArrays));
+        System.out.println("MergeUnionTestLeftArrayIsEmpty Simple test ReturnValue: " + Arrays.toString(returnValue));
+        System.out.println("MergeUnionTestLeftArrayIsEmpty Simple test ExpectedArrays: " + Arrays.toString(expectedArrays));
     }
 
     public void mergeUnionTestLeftArrayIsNull(){

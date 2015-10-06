@@ -65,12 +65,6 @@ public class Main {
 
         PersonUtils.isEqual(group1, group2);
 
-//Person equals tests
-        personTests.verifyIsPersonEqual(person1, person4, true);
-        personTests.verifyIsPersonNotEqual(person1, person2, false);
-
-        personTests.verifyGroupsAreEquals();
-        personTests.mergeUnionTestPositive();
 
         //calling PersonUtils basic methods
         personUtils.mergeWithoutDuplicates(group1, group2);
@@ -84,6 +78,20 @@ public class Main {
         personUtils.outerUnion(group1, group2);
         Person [] outerUnionPersonResult=personUtils.innerUnion(group1,group2);
         System.out.println("Outer Union Method result" + Arrays.toString(outerUnionPersonResult));
+
+        //Person equals tests
+        personTests.verifyIsPersonEqual(person1, person4, true);
+        personTests.verifyIsPersonNotEqual(person1, person2, false);
+        personTests.verifyGroupsAreEquals();
+        personTests.mergeUnionTestPositive();
+        personTests.mergeUnionTestleftArrayIsEmpty();
+        personTests.mergeUnionTestLeftArrayIsNull();
+        personTests.innerUnionTestPositive();
+        personTests.innerUnionTestLeftArrayIsEmpty();
+        personTests.innerUnionTestLeftArrayIsNull();
+        personTests.outerUnionTestPositive();
+        personTests.outerUnionTestLeftArrayIsEmpty();
+        personTests.outerUnionTestLeftArrayIsNull();
     }
 
 }

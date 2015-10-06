@@ -25,14 +25,12 @@ public class PersonUtils {
     }
 
     public Person[] mergeWithoutDuplicates(Person[] group1, Person[] group2) {
-        if(group1==null) return null;
-        else if (group2.length==0) return group1;
         Person[] buffArray = Arrays.copyOf(group1, group1.length + group2.length);
         int index = group1.length;
         for (Person rightArrayElement : group2) {
             boolean isUnique = true;
             for (Person leftArrayElement : group1) {
-                if (leftArrayElement.equals(rightArrayElement)){
+                if (rightArrayElement.equals(leftArrayElement)){
                     isUnique = false;
                 }
             }
