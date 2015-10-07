@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.*;
 
 public class PersonTests {
 
@@ -46,7 +46,7 @@ public class PersonTests {
     }
 
     @Test
-    public void mergeUnionTestPositive() {
+    public void mergeUnionTestPositive() throws Exception{
         Person person1 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
         Person person2 = new Person("Pelageya", "Chepurnenka", 31, 2, JobTitleEnum.DEVELOPER);
         Person person3 = new Person("Antoniy", "Cheburashka", 31, 3, JobTitleEnum.QA);
@@ -61,7 +61,7 @@ public class PersonTests {
     }
 
     @Test
-    public void mergeUnionTestleftArrayIsEmpty() {
+    public void mergeUnionTestleftArrayIsEmpty() throws Exception{
         Person person1 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
         Person person2 = new Person("Pelageya", "Chepurnenka", 31, 2, JobTitleEnum.DEVELOPER);
         Person person3 = new Person("Antoniy", "Cheburashka", 31, 3, JobTitleEnum.QA);
@@ -71,30 +71,33 @@ public class PersonTests {
         Person[] expectedGroup = {person2, person1, person4, person3};
         PersonUtils main = new PersonUtils();
         Person[] returnGroup = main.mergeWithoutDuplicates(group1, group2);
-        assertArrayEquals(expectedGroup,returnGroup);
+        assertArrayEquals(expectedGroup, returnGroup);
     }
 
     @Test
-    public void mergeUnionTestLeftArrayIsNull() {
+    public void mergeUnionTestLeftArrayIsNull() throws Exception{
         Person person1 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
         Person person2 = new Person("Pelageya", "Chepurnenka", 31, 2, JobTitleEnum.DEVELOPER);
         Person person3 = new Person("Antoniy", "Cheburashka", 31, 3, JobTitleEnum.QA);
         Person person4 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
+
+        String expectedValue="Wrong values";
+
         Person[] group1 = null;
         Person[] group2 = {person2, person1, person4, person3};
         Person[] expectedGroup = null;
-        System.out.println("Merge union left array is null test expected group is " + Arrays.toString(expectedGroup));
         PersonUtils main = new PersonUtils();
         try {
-            Person[] returnGroup = main.mergeWithoutDuplicates(group1, group2);
-            System.out.println("Merge union left array is null test returned group is " + Arrays.toString(returnGroup));
-        } catch (NullPointerException e) {
-            System.out.println("MergeUnionTestLeftArrayIsNull person test passed");
+            main.mergeWithoutDuplicates(group1, group2);
+            fail("Exception Should be thrown");
+        } catch (MyException exception) {
+            assertEquals(expectedValue, exception.getErrorCode());
         }
+        // assert return value
     }
 
     @Test
-    public void innerUnionTestPositive() {
+    public void innerUnionTestPositive() throws Exception{
         Person person1 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
         Person person2 = new Person("Pelageya", "Chepurnenka", 31, 2, JobTitleEnum.DEVELOPER);
         Person person3 = new Person("Antoniy", "Cheburashka", 31, 3, JobTitleEnum.QA);
@@ -108,7 +111,7 @@ public class PersonTests {
     }
 
     @Test
-    public void innerUnionTestLeftArrayIsEmpty() {
+    public void innerUnionTestLeftArrayIsEmpty() throws Exception{
         Person person1 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
         Person person2 = new Person("Pelageya", "Chepurnenka", 31, 2, JobTitleEnum.DEVELOPER);
         Person person3 = new Person("Antoniy", "Cheburashka", 31, 3, JobTitleEnum.QA);
@@ -122,26 +125,34 @@ public class PersonTests {
     }
 
     @Test
-    public void innerUnionTestLeftArrayIsNull() {
+    public void innerUnionTestLeftArrayIsNull() throws Exception{
         Person person1 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
         Person person2 = new Person("Pelageya", "Chepurnenka", 31, 2, JobTitleEnum.DEVELOPER);
         Person person3 = new Person("Antoniy", "Cheburashka", 31, 3, JobTitleEnum.QA);
         Person person4 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
+
+        String expectedValue="Wrong values";
+
         Person[] group1 = null;
         Person[] group2 = {person3, person1, person4, person2};
         Person[] expectedGroup = null;
         System.out.println("Inner union left array is null person test expected group is " + Arrays.toString(expectedGroup));
+        // initialize class to test
         PersonUtils main = new PersonUtils();
+        // invoke method on class to test
         try {
-            Person[] returnGroup = main.innerUnion(group1, group2);
-            System.out.println("Inner union left array is null person test returned group is " + Arrays.toString(returnGroup));
-        } catch (NullPointerException e) {
-            System.out.println("InnerUnionTestLeftArrayIsNull person test passed");
+            main.innerUnion(group1, group2);
+            fail("Exception Should be thrown");
+        } catch (MyException exception) {
+            assertEquals(expectedValue, exception.getErrorCode());
         }
+        // assert return value
     }
 
+
+
     @Test
-    public void outerUnionTestPositive() {
+    public void outerUnionTestPositive() throws Exception{
         Person person1 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
         Person person2 = new Person("Pelageya", "Chepurnenka", 31, 2, JobTitleEnum.DEVELOPER);
         Person person3 = new Person("Antoniy", "Cheburashka", 31, 3, JobTitleEnum.QA);
@@ -155,7 +166,7 @@ public class PersonTests {
     }
 
     @Test
-    public void outerUnionTestLeftArrayIsEmpty() {
+    public void outerUnionTestLeftArrayIsEmpty() throws Exception{
         Person person1 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
         Person person2 = new Person("Pelageya", "Chepurnenka", 31, 2, JobTitleEnum.DEVELOPER);
         Person person3 = new Person("Antoniy", "Cheburashka", 31, 3, JobTitleEnum.QA);
@@ -169,22 +180,26 @@ public class PersonTests {
     }
 
     @Test
-    public void outerUnionTestLeftArrayIsNull() {
+    public void outerUnionTestLeftArrayIsNull() throws Exception{
         Person person1 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
         Person person2 = new Person("Pelageya", "Chepurnenka", 31, 2, JobTitleEnum.DEVELOPER);
         Person person3 = new Person("Antoniy", "Cheburashka", 31, 3, JobTitleEnum.QA);
         Person person4 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
+
+        String expectedValue="Wrong values";
+
         Person[] group1 = null;
         Person[] group2 = {person3, person1, person4, person2};
         Person[] expectedGroup = null;
         System.out.println("Outer union left array is null person test expected group is " + Arrays.toString(expectedGroup));
         PersonUtils main = new PersonUtils();
         try {
-            Person[] returnGroup = main.outerUnion(group1, group2);
-            System.out.println("Outer union left array is null person test returned group is " + Arrays.toString(returnGroup));
-        } catch (NullPointerException e) {
-            System.out.println("Outer Union Test Left Array IsNull person test passed");
+            main.innerUnion(group1, group2);
+            fail("Exception Should be thrown");
+        } catch (MyException exception) {
+            assertEquals(expectedValue, exception.getErrorCode());
         }
+        // assert return value
     }
 
 

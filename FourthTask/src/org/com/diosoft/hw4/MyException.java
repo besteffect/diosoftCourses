@@ -3,14 +3,12 @@ package org.com.diosoft.hw4;
 /**
  * Created by vsv on 10/6/2015.
  */
-public class MyException extends RuntimeException{
-    private final String errorMessage;
-
+public class MyException extends Exception{
+    private final String errorCode;
     public MyException(String errorCode){
-        this.errorMessage=errorCode;
+        this.errorCode=errorCode;
     }
-
-    public String getErrorMessage(){
-        return errorMessage;
+    public String getErrorCode(){
+        return errorCode;
     }
 }

@@ -24,7 +24,10 @@ public class PersonUtils {
         return false;
     }
 
-    public Person[] mergeWithoutDuplicates(Person[] group1, Person[] group2) {
+    public Person[] mergeWithoutDuplicates(Person[] group1, Person[] group2) throws  MyException{
+        if (group1==null || group2 == null){
+            throw new MyException("Wrong values");
+        }
         Person[] buffArray = Arrays.copyOf(group1, group1.length + group2.length);
         int index = group1.length;
         for (Person rightArrayElement : group2) {
@@ -39,11 +42,15 @@ public class PersonUtils {
                 index++;
             }
         }
-        return Arrays.copyOf(buffArray, index);
+        Person[] resultArray;
+        resultArray = Arrays.copyOf(buffArray, index);
+        return resultArray;
     }
 
-    public Person[] innerUnion(Person[] group1, Person[] group2) {
-        if (group1 == null || group2 == null) return null;
+    public Person[] innerUnion(Person[] group1, Person[] group2) throws MyException {
+        if (group1==null || group2 == null){
+            throw new MyException("Wrong values");
+        }
         int index = 0;
         Person[] buffArray = new Person[group1.length];
         for (int i = 0; i < group1.length; i++) {
@@ -66,8 +73,9 @@ public class PersonUtils {
         return resultArray;
     }
 
-    public Person[] outerUnion(Person[] group1, Person[] group2) {
+    public Person[] outerUnion(Person[] group1, Person[] group2) throws MyException{
         Person[] buffArray = new Person[group1.length+group2.length];
+
         int index = 0;
         boolean isUnique=false;
         for (int i = 0; i < group1.length; i++) {

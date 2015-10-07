@@ -1,11 +1,12 @@
 import org.com.diosoft.hw4.JobTitleEnum;
+import org.com.diosoft.hw4.MyException;
 import org.com.diosoft.hw4.Person;
 import org.com.diosoft.hw4.PersonUtils;
 
 import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MyException {
         PersonUtils personUtils = new PersonUtils();
 
 
