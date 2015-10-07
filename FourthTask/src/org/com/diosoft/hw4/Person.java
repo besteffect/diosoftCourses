@@ -15,12 +15,14 @@ public class Person {
     private String secondName;
     private int age;
     private int id;
+    private JobTitleEnum jobTitle;
 
-    public Person(String firstName, String secondName, int age, int id, JobTitleEnum director) {
+    public Person(String firstName, String secondName, int age, int id, JobTitleEnum jobTitle) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.age = age;
         this.id=id;
+        this.jobTitle=jobTitle;
     }
 
     public String getFirstName() {
