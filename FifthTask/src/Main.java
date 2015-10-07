@@ -1,3 +1,5 @@
+import org.com.diosoft.hw5.Person;
+
 /**
  * Created by user on 9/23/15.
  */
@@ -6,7 +8,8 @@ public class Main {
         Person person=new Person.Builder()
                 .firstName("Victor")
                 .secondName("Chernenkiy")
-                .age("40")
+                .age(40)
+                .id(1)
                 .build();
         System.out.println(person);
 
