@@ -5,7 +5,7 @@ import org.com.diosoft.hw5.Person;
 
 import java.util.Arrays;
 
-public class PersonUtils {
+public class PersonHelper {
 
     public static boolean isEqual(Person person1,Person person2) {
         if (person1.equals(person2)) {
@@ -47,7 +47,7 @@ public class PersonUtils {
         }
         Person[] resultArray;
         resultArray = Arrays.copyOf(buffArray, index);
-        return resultArray;
+        return removeNullName(resultArray);
     }
 
     public Person[] innerUnion(Person[] group1, Person[] group2) throws MyException {
@@ -73,12 +73,12 @@ public class PersonUtils {
             }
         }
         Person[] resultArray = Arrays.copyOf(buffArray, index);
-        return resultArray;
+        return removeNullName(resultArray);
     }
 
     public Person[] outerUnion(Person[] group1, Person[] group2) throws MyException{
+        if (group1==null || group2==null) return null;
         Person[] buffArray = new Person[group1.length+group2.length];
-
         int index = 0;
         boolean isUnique=false;
         for (int i = 0; i < group1.length; i++) {
@@ -106,10 +106,22 @@ public class PersonUtils {
             }
         }
         Person[]resultArray=Arrays.copyOf(buffArray,index); //  (length = index)
-        return resultArray;
+        return removeNullName(resultArray);
     }
 
+//добавить проверку для каждого Person на не пустой и не null name
+    public Person[] removeNullName (Person[] array){
+        Person[] buffArray = new Person[array.length];
+        int counter = 0;
+        for (Person s : array) {
+            if (s != null) {
+                buffArray[counter++] = s;
+            }
+        }
+        Person[] result = new Person[counter];
+        System.arraycopy(buffArray, 0, result, 0, counter);
+        return result;
 
-
+    }
 
 }
