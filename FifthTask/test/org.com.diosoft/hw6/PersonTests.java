@@ -10,13 +10,17 @@
 // - добавить проверку для каждого Person на не пустой и не null name
 
 package hw6;
+
 import org.com.diosoft.hw6.MyException;
 import org.com.diosoft.hw6.Person;
 import org.com.diosoft.hw6.PersonComparator;
 import org.com.diosoft.hw6.PersonHelper;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -98,13 +102,28 @@ public class PersonTests {
                 .age(40)
                 .id(1)
                 .build();
-        Person[] group1 = {person1, person2, person3};
-        Person[] group2 = {person2, person1, person4};
-        Person[] expectedGroup = {person1, person2, person3}; // expected result is here
+        List<Person> group1=new ArrayList<>();
+        group1.add(person1);
+        group1.add(person2);
+        group1.add(person3);
+
+        List<Person> group2=new ArrayList<>();
+        group2.add(person2);
+        group2.add(person1);
+        group2.add(person4);
+
+        List<Person> expectedGroup=new ArrayList<>();
+        expectedGroup.add(person1);
+        expectedGroup.add(person2);
+        expectedGroup.add(person3);
+
         PersonHelper main = new PersonHelper();
-        Person[] returnGroup = main.mergeWithoutDuplicates(group1, group2);
-        assertArrayEquals(expectedGroup, returnGroup);
+        Set returnGroup = main.mergeWithoutDuplicates(group1, group2);
+        assertEquals(expectedGroup, returnGroup);
     }
+
+
+
     @Test
     public void mergeUnionTestleftArrayIsEmpty() throws Exception {
         Person person1 = new Person.Builder()
@@ -131,12 +150,17 @@ public class PersonTests {
                 .age(40)
                 .id(1)
                 .build();
-        Person[] group1 = {};
-        Person[] group2 = {person2, person1, person4, person3};
+        List<Person> group1=new ArrayList<>();
+        List<Person> group2=new ArrayList<>();
+        group2.add(person2);
+        group2.add(person1);
+        group2.add(person4);
+        group2.add(person3);
+
         Person[] expectedGroup = {person2, person1, person4, person3};
         PersonHelper main = new PersonHelper();
-        Person[] returnGroup = main.mergeWithoutDuplicates(group1, group2);
-        assertArrayEquals(expectedGroup, returnGroup);
+        Set returnGroup = main.mergeWithoutDuplicates(group1, group2);
+        assertEquals(expectedGroup, returnGroup);
     }
     @Test
     public void mergeUnionTestLeftArrayIsNull() throws Exception {
@@ -165,8 +189,12 @@ public class PersonTests {
                 .id(1)
                 .build();
         String expectedValue = "Wrong values";
-        Person[] group1 = null;
-        Person[] group2 = {person2, person1, person4, person3};
+        List<Person> group1 = null;
+        List<Person> group2=new ArrayList<>();
+        group2.add(person2);
+        group2.add(person1);
+        group2.add(person4);
+        group2.add(person3);
         Person[] expectedGroup = null;
         PersonHelper main = new PersonHelper();
         try {

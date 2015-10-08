@@ -1,6 +1,9 @@
 package org.com.diosoft.hw6;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class PersonHelper {
 
@@ -24,27 +27,15 @@ public class PersonHelper {
         return false;
     }
 
-    public Person[] mergeWithoutDuplicates(Person[] group1, Person[] group2) throws MyException {
-        if (group1==null || group2 == null){
-            throw new MyException("Wrong values");
-        }
-        Person[] buffArray = Arrays.copyOf(group1, group1.length + group2.length);
-        int index = group1.length;
-        for (Person rightArrayElement : group2) {
-            boolean isUnique = true;
-            for (Person leftArrayElement : group1) {
-                if (rightArrayElement.equals(leftArrayElement)){
-                    isUnique = false;
-                }
-            }
-            if (isUnique) {
-                buffArray[index] = rightArrayElement;
-                index++;
-            }
-        }
-        Person[] resultArray;
-        resultArray = Arrays.copyOf(buffArray, index);
-        return removeNullName(resultArray);
+    public Set mergeWithoutDuplicates(List<Person> group1, List<Person> group2) throws MyException {
+        Set set = new HashSet();
+        for (int i = 0 ; i < group1.size() ; i++)
+            set.add(Integer.valueOf(String.valueOf(group1.get(i))));
+        Set set2 = new HashSet();
+        for (int i = 0 ; i < group1.size() ; i++)
+            set.add(Integer.valueOf(String.valueOf(group2.get(i))));
+        set.addAll(set2);
+        return set;
     }
 
     public Person[] innerUnion(Person[] group1, Person[] group2) throws MyException {
