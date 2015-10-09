@@ -73,6 +73,7 @@ public class PersonTests {
             System.out.println("Group compare test failed");
         }
     }
+
     @Test
     public void mergeUnionTestPositive() throws Exception {
         Person person1 = new Person.Builder()
@@ -119,8 +120,6 @@ public class PersonTests {
         assertEquals(expectedGroup, returnGroup);
     }
 
-
-
     @Test
     public void mergeUnionTestleftArrayIsEmpty() throws Exception {
         Person person1 = new Person.Builder()
@@ -163,6 +162,7 @@ public class PersonTests {
         Set returnGroup = main.mergeWithoutDuplicates(group1, group2);
         assertEquals(expectedGroup, returnGroup);
     }
+
     @Test
     public void mergeUnionTestLeftArrayIsNull() throws Exception {
         Person person1 = new Person.Builder()
@@ -206,6 +206,7 @@ public class PersonTests {
         }
         // assert return value
     }
+
     @Test
     public void innerUnionTestPositive() throws Exception {
         Person person1 = new Person.Builder()
@@ -232,13 +233,22 @@ public class PersonTests {
                 .age(40)
                 .id(1)
                 .build();
-        Person[] group1 = {person1, person2};
-        Person[] group2 = {person3, person1, person4};
-        Person[] expectedGroup = {person1};
+        Set <Person> group1 = new HashSet<>();
+        group1.add(person1);
+        group1.add(person2);
+
+        Set <Person> group2 = new HashSet<>();
+        group2.add(person3);
+        group2.add(person1);
+        group2.add(person4);
+
+        Set<Person> expectedGroup=new HashSet<>();
+        expectedGroup.add(person1);
         PersonHelper main = new PersonHelper();
-        Person[] returnGroup = main.innerUnion(group1, group2);
-        assertArrayEquals(expectedGroup, returnGroup);
+        Set returnGroup = main.innerUnion(group1, group2);
+        assertEquals(expectedGroup, returnGroup);
     }
+
     @Test
     public void innerUnionTestLeftArrayIsEmpty() throws Exception {
         Person person1 = new Person.Builder()
@@ -265,12 +275,17 @@ public class PersonTests {
                 .age(40)
                 .id(1)
                 .build();
-        Person[] group1 = {};
-        Person[] group2 = {person3, person1, person4};
-        Person[] expectedGroup = {};
+        Set<Person> group1=new HashSet<>();
+        Set <Person> group2 = new HashSet<>();
+        group2.add(person3);
+        group2.add(person1);
+        group2.add(person4);
+
+       Set<Person> expectedGroup = new HashSet<>();
+
         PersonHelper main = new PersonHelper();
-        Person[] returnGroup = main.innerUnion(group1, group2);
-        assertArrayEquals(expectedGroup, returnGroup);
+        Set returnGroup = main.innerUnion(group1, group2);
+        assertEquals(expectedGroup, returnGroup);
     }
     @Test
     public void innerUnionTestLeftArrayIsNull() throws Exception {
@@ -298,12 +313,16 @@ public class PersonTests {
                 .age(40)
                 .id(1)
                 .build();
-
         String expectedValue = "Wrong values";
-        Person[] group1 = null;
-        Person[] group2 = {person3, person1, person4, person2};
-        Person[] expectedGroup = null;
-        System.out.println("Inner union left array is null person test expected group is " + Arrays.toString(expectedGroup));
+
+        Set<Person> group1=new HashSet<>();
+
+        Set<Person> group2 = new HashSet<>();
+        group2.add(person1);
+        group2.add(person4);
+        group2.add(person2);
+
+        Set<Person> expectedGroup = null;
         // initialize class to test
         PersonHelper main = new PersonHelper();
         // invoke method on class to test
@@ -313,7 +332,8 @@ public class PersonTests {
         } catch (MyException exception) {
             assertEquals(expectedValue, exception.getErrorCode());
         }
-        // assert return value
+
+
     }
     @Test
     public void outerUnionTestPositive() throws Exception {
@@ -341,12 +361,22 @@ public class PersonTests {
                 .age(40)
                 .id(1)
                 .build();
-        Person[] group1 = {person1, person2};
-        Person[] group2 = {person3, person1};
-        Person[] expectedGroup = {person2, person3};
+
+        Set<Person> group1 = new HashSet<>();
+        group1.add(person1);
+        group1.add(person2);
+
+        Set <Person> group2 = new HashSet<>();
+        group2.add(person3);
+        group2.add(person1);
+
+        Set<Person> expectedGroup = new HashSet<>();
+        expectedGroup.add(person2);
+        expectedGroup.add(person3);
+
         PersonHelper main = new PersonHelper();
-        Person[] returnGroup = main.outerUnion(group1, group2);
-        assertArrayEquals(expectedGroup, returnGroup);
+        Set returnGroup = main.outerUnion(group1, group2);
+        assertEquals(expectedGroup, returnGroup);
     }
     @Test
     public void outerUnionTestLeftArrayIsEmpty() throws Exception {
@@ -374,12 +404,21 @@ public class PersonTests {
                 .age(40)
                 .id(1)
                 .build();
-        Person[] group1 = {};
-        Person[] group2 = {person3, person1, person4};
-        Person[] expectedGroup = {person3, person1, person4};
+        Set<Person> group1 = new HashSet<>();
+
+        Set<Person> group2 = new HashSet<>();
+        group2.add(person3);
+        group2.add(person1);
+        group2.add(person4);
+
+        Set<Person> expectedGroup = new HashSet<>();
+        expectedGroup.add(person3);
+        expectedGroup.add(person1);
+        expectedGroup.add(person4);
+
         PersonHelper main = new PersonHelper();
-        Person[] returnGroup = main.outerUnion(group1, group2);
-        assertArrayEquals(expectedGroup, returnGroup);
+        Set returnGroup = main.outerUnion(group1, group2);
+        assertEquals(expectedGroup, returnGroup);
     }
     @Test
     public void outerUnionTestLeftArrayIsNull() throws Exception {
@@ -408,10 +447,16 @@ public class PersonTests {
                 .id(1)
                 .build();
         String expectedValue = "Wrong values";
-        Person[] group1 = null;
-        Person[] group2 = {person3, person1, person4, person2};
-        Person[] expectedGroup = null;
-        System.out.println("Outer union left array is null person test expected group is " + Arrays.toString(expectedGroup));
+        Set<Person> group1 = null;
+        Set<Person> group2 = new HashSet<>();
+        group2.add(person3);
+        group2.add(person1);
+        group2.add(person4);
+        group2.add(person2);
+
+
+        Set<Person> expectedGroup = null;
+
         PersonHelper main = new PersonHelper();
         try {
             main.innerUnion(group1, group2);

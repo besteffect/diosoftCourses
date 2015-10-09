@@ -41,63 +41,23 @@ public class PersonHelper {
         return set1;
     }
 
-    public Person[] innerUnion(Person[] group1, Person[] group2) throws MyException {
+    public Set<Person> innerUnion(Set<Person> group1, Set<Person> group2) throws MyException {
         if (group1==null || group2 == null){
             throw new MyException("Wrong values");
         }
-        int index = 0;
-        Person[] buffArray = new Person[group1.length];
-        for (int i = 0; i < group1.length; i++) {
-            for (int j = 0; j < group2.length; j++) {
-                if (group1[i] == group2[j]) {
-                    boolean isUnique = true;
-                    for (int k = 0; k < index; k++) {
-                        if (buffArray[k] == group1[i]) {
-                            isUnique = false;
-                        }
-                    }
-                    if (isUnique) {
-                        buffArray[index] = group1[i];
-                        index++;
-                    }
-                }
-            }
-        }
-        Person[] resultArray = Arrays.copyOf(buffArray, index);
-        return removeNullName(resultArray);
+        Set set1 = new HashSet(group1);
+        set1.retainAll(group2);
+        return set1;
     }
 
-    public Person[] outerUnion(Person[] group1, Person[] group2) throws MyException {
+    public Set<Person> outerUnion(Set<Person> group1, Set<Person> group2) throws MyException {
         if (group1==null || group2==null) return null;
-        Person[] buffArray = new Person[group1.length+group2.length];
-        int index = 0;
-        boolean isUnique=false;
-        for (int i = 0; i < group1.length; i++) {
-            isUnique = false;
-            for (int j = 0; j < group2.length; j++) {
-                if (group1[i] == group2[j]) {
-                    isUnique = true;
-                }
-            }
-            if (!isUnique) {
-                buffArray[index] = group1[i];
-                index++;
-            }
-        }
-        for (int j = 0; j < group2.length; j++) {
-            isUnique = false;
-            for (int i = 0; i < group1.length; i++) {
-                if (group2[j] == group1[i]) {
-                    isUnique = true;
-                }
-            }
-            if(!isUnique){
-                buffArray[index] = group2[j];
-                index++;
-            }
-        }
-        Person[]resultArray=Arrays.copyOf(buffArray,index); //  (length = index)
-        return removeNullName(resultArray);
+        Set set1 = new HashSet(group1);
+        set1.removeAll(group2);
+        Set set2=new HashSet((group2));
+        set2.removeAll(group1);
+        set1.addAll(set2);
+        return set1;
     }
 
 //добавить проверку для каждого Person на не пустой и не null name
