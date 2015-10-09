@@ -17,10 +17,7 @@ import org.com.diosoft.hw6.PersonComparator;
 import org.com.diosoft.hw6.PersonHelper;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -102,17 +99,17 @@ public class PersonTests {
                 .age(40)
                 .id(1)
                 .build();
-        List<Person> group1=new ArrayList<>();
+        Set<Person> group1=new HashSet<>();
         group1.add(person1);
         group1.add(person2);
         group1.add(person3);
 
-        List<Person> group2=new ArrayList<>();
+        Set<Person> group2=new HashSet<>();
         group2.add(person2);
         group2.add(person1);
         group2.add(person4);
 
-        List<Person> expectedGroup=new ArrayList<>();
+        Set<Person> expectedGroup=new HashSet<>();
         expectedGroup.add(person1);
         expectedGroup.add(person2);
         expectedGroup.add(person3);
@@ -150,14 +147,18 @@ public class PersonTests {
                 .age(40)
                 .id(1)
                 .build();
-        List<Person> group1=new ArrayList<>();
-        List<Person> group2=new ArrayList<>();
+        Set<Person> group1=new HashSet<>();
+        Set<Person> group2=new HashSet<>();
         group2.add(person2);
         group2.add(person1);
         group2.add(person4);
         group2.add(person3);
 
-        Person[] expectedGroup = {person2, person1, person4, person3};
+        Set<Person> expectedGroup = new HashSet<>();
+        expectedGroup.add(person2);
+        expectedGroup.add(person1);
+        expectedGroup.add(person4);
+        expectedGroup.add(person3);
         PersonHelper main = new PersonHelper();
         Set returnGroup = main.mergeWithoutDuplicates(group1, group2);
         assertEquals(expectedGroup, returnGroup);
@@ -189,13 +190,13 @@ public class PersonTests {
                 .id(1)
                 .build();
         String expectedValue = "Wrong values";
-        List<Person> group1 = null;
-        List<Person> group2=new ArrayList<>();
+        Set<Person> group1 = null;
+        Set<Person> group2=new HashSet<>();
         group2.add(person2);
         group2.add(person1);
         group2.add(person4);
         group2.add(person3);
-        Person[] expectedGroup = null;
+        Set<Person> expectedGroup = null;
         PersonHelper main = new PersonHelper();
         try {
             main.mergeWithoutDuplicates(group1, group2);

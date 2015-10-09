@@ -27,15 +27,18 @@ public class PersonHelper {
         return false;
     }
 
-    public Set mergeWithoutDuplicates(List<Person> group1, List<Person> group2) throws MyException {
-        Set set = new HashSet();
-        for (int i = 0 ; i < group1.size() ; i++)
-            set.add(Integer.valueOf(String.valueOf(group1.get(i))));
-        Set set2 = new HashSet();
-        for (int i = 0 ; i < group1.size() ; i++)
-            set.add(Integer.valueOf(String.valueOf(group2.get(i))));
-        set.addAll(set2);
-        return set;
+    public Set<Person> mergeWithoutDuplicates(Set<Person> group1, Set<Person> group2) throws MyException {
+        if (group1==null || group2 == null){
+            throw new MyException("Wrong values");
+        }
+        Set set1 = new HashSet(group1);
+       // for (int i = 0 ; i < group1.size() ; i++)
+         //   set1.add(i);
+       // Set set2 = new HashSet(group2);
+        //for (int i = 0 ; i < group2.size() ; i++)
+          //  set2.add(i);
+        set1.addAll(group2);
+        return set1;
     }
 
     public Person[] innerUnion(Person[] group1, Person[] group2) throws MyException {
