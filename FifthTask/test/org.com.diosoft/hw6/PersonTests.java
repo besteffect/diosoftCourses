@@ -315,8 +315,7 @@ public class PersonTests {
                 .build();
         String expectedValue = "Wrong values";
 
-        Set<Person> group1=new HashSet<>();
-
+        Set<Person> group1=null;
         Set<Person> group2 = new HashSet<>();
         group2.add(person1);
         group2.add(person4);
@@ -453,7 +452,6 @@ public class PersonTests {
         group2.add(person1);
         group2.add(person4);
         group2.add(person2);
-
 
         Set<Person> expectedGroup = null;
 
