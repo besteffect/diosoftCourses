@@ -2,9 +2,9 @@ package org.com.diosoft.hw6;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
+//local code review (vtegza): same comments as for ThirdTask (PersonUtils)@ 18.10.15
 public class PersonHelper {
 
     public static boolean isEqual(Person person1,Person person2) {
@@ -31,6 +31,7 @@ public class PersonHelper {
         if (group1==null || group2 == null){
             throw new MyException("Wrong values");
         }
+        //local code review (vtegza): add generics @ 18.10.15
         Set set1 = new HashSet(group1);
        // for (int i = 0 ; i < group1.size() ; i++)
          //   set1.add(i);
@@ -45,6 +46,7 @@ public class PersonHelper {
         if (group1==null || group2 == null){
             throw new MyException("Wrong values");
         }
+        //local code review (vtegza): add generics @ 18.10.15
         Set set1 = new HashSet(group1);
         set1.retainAll(group2);
         return set1;
@@ -52,6 +54,7 @@ public class PersonHelper {
 
     public Set<Person> outerUnion(Set<Person> group1, Set<Person> group2) throws MyException {
         if (group1==null || group2==null) return null;
+        //local code review (vtegza): add generics @ 18.10.15
         Set set1 = new HashSet(group1);
         set1.removeAll(group2);
         Set set2=new HashSet((group2));

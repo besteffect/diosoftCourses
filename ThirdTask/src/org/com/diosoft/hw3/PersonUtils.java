@@ -2,6 +2,7 @@ package org.com.diosoft.hw3;
 
 import java.util.Arrays;
 
+//local code review (vtegza): eliminate code duplicate @ 18.10.15
 public class PersonUtils {
 
     public static boolean isEqual(Person person1,Person person2) {
@@ -82,6 +83,7 @@ public class PersonUtils {
                 index++;
             }
         }
+        //local code review (vtegza): fore each clould be used @ 18.10.15
         for (int j = 0; j < group2.length; j++) {
             isUnique = false;
             for (int i = 0; i < group1.length; i++) {

@@ -1,10 +1,8 @@
 package org.com.diosoft.hw5;
 
-import org.com.diosoft.hw5.MyException;
-import org.com.diosoft.hw5.Person;
-
 import java.util.Arrays;
 
+//local code review (vtegza): remove code duplicats @ 18.10.15
 public class PersonHelper {
 
     public static boolean isEqual(Person person1,Person person2) {

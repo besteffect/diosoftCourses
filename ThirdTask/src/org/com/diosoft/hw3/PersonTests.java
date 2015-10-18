@@ -135,6 +135,7 @@ public class PersonTests {
     }
 
     public void outerUnionTestPositive(){
+        //local code review (vtegza): move person/person2/person3 as instacnce variable and reuse in other test @ 18.10.15
         Person person1 = new Person("Petro", "Sodrugailo", 40, 1, JobTitleEnum.DIRECTOR);
         Person person2 = new Person("Pelageya", "Chepurnenka", 31, 2, JobTitleEnum.DEVELOPER);
         Person person3 = new Person("Antoniy", "Cheburashka", 31, 3, JobTitleEnum.QA);

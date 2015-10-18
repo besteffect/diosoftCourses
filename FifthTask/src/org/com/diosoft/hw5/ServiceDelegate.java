@@ -3,8 +3,11 @@ package org.com.diosoft.hw5;
 import java.util.Arrays;
 // ВОПРОСЫ
 // 1. Как можно в HW5 И HW6 сократить код?
+//local code review (vtegza): use code duplicats in Idea, in general introduce separated methods with common logic @ 18.10.15
 // 2. Мне не нравится что пришлось "throws MyException"  и try/catch дотянуть аж сюда. Как можно это обойти?
+//local code review (vtegza): it is ok, noramaly you will want bring such exception handling in Service like this. @ 18.10.15
 // 3. Как сделать логирование результатов в xml файл?
+//local code review (vtegza): logging is better with Log4J framework - it has some kind of formatter that can write to xml file but normally only text file are used or logging into the db @ 18.10.15
 // 4. ...
 
 public class ServiceDelegate {

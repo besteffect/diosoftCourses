@@ -14,9 +14,11 @@ import java.util.List;
 // добавте метод для удобного создания событий createEvent(title, emails)
 // добавте метод для поиска события по title Event  searac(title: String)
 // функционал должен быть протестирован с помощью юнит тестов
+//local code review (vtegza): add UUID as id field @ 18.10.15
 public class Event {
     private final String description;
     private final List<String> attenders;
+    //local code review (vtegza): add start/end date (@see DateTime api in java) @ 18.10.15
     private final Date date;
 
     private Event( Builder builder){

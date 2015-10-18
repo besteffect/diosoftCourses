@@ -2,6 +2,7 @@ package org.com.diosoft.hw4;
 
 import java.util.Arrays;
 
+//local code review (vtegza): same comments as for ThirdTask @ 18.10.15
 public class PersonUtils {
 
     public static boolean isEqual(Person person1,Person person2) {
