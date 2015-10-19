@@ -16,8 +16,7 @@ public class PersonTests {
 
     public void verifyIsPersonNotEqual(Person person1, Person person2, boolean notEqualPerson) {
         boolean actualResult = PersonUtils.isEqual(person1, person2);
-        boolean expectedResult = notEqualPerson;
-        if (actualResult == expectedResult) {
+        if (actualResult == notEqualPerson) {
             System.out.println("Negative person test passed");
         } else {
             System.out.println("Negative person test failed");

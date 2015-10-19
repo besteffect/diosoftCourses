@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class ArrayUtils {
 
 
-    //local code review (vtegza): should be not static @ 27.09.15
+    //local code review (vtegza): should be not static @ 27.09.15 Vitaliy: DONE
     public int[] leftUnion(int[] leftArray, int[] rightArray) {
         int[] buffArray = Arrays.copyOf(leftArray, leftArray.length + rightArray.length);
         int countOfFoundElementsInRightArray = 0;
@@ -18,8 +18,7 @@ public class ArrayUtils {
             }
         }
        // System.out.println("Count of found elements for left union is: " + countOfFoundElementsInRightArray);
-        int[] resultArray = Arrays.copyOf(buffArray, leftArray.length + countOfFoundElementsInRightArray);
-        return resultArray;
+        return Arrays.copyOf(buffArray, leftArray.length + countOfFoundElementsInRightArray);
     }
 
     public int[] mergeWithoutDuplicates(int[] leftArray, int[] rightArray) {
@@ -43,25 +42,24 @@ public class ArrayUtils {
     public int[] innerUnion(int[] leftArray, int[] rightArray) {
         int index = 0;
         int[] buffArray = new int[leftArray.length];
-        for (int i = 0; i < leftArray.length; i++) {
-            for (int j = 0; j < rightArray.length; j++) {
-                if (leftArray[i] == rightArray[j]) {
+        for (int leftArrayElement : leftArray) {
+            for (int rightArrayElement : rightArray) {
+                if (leftArrayElement == rightArrayElement) {
                     boolean isUnique = true;
                     for (int k = 0; k < index; k++) {
-                        if (buffArray[k] == leftArray[i]) {
+                        if (buffArray[k] == leftArrayElement) {
                             isUnique = false;
                         }
                     }
                     if (isUnique) {
-                        buffArray[index] = leftArray[i];
+                        buffArray[index] = leftArrayElement;
                         index++;
-                       // System.out.println("Common Number: " + leftArray[i]);
+                        // System.out.println("Common Number: " + leftArray[i]);
                     }
                 }
             }
         }
-        int[] resultArray = Arrays.copyOf(buffArray, index);
-        return resultArray;
+        return Arrays.copyOf(buffArray, index);
     }
 
     public int[] outerUnion(int[] leftArray, int[] rightArray) {
@@ -69,33 +67,32 @@ public class ArrayUtils {
         int index = 0; // creating index for counting the number of elements in final array
         boolean isUnique=false;
 
-        for (int i = 0; i < leftArray.length; i++) {
+        for (int leftArrayElement : leftArray) {
             isUnique = false;
-            for (int j = 0; j < rightArray.length; j++) {
-                if (leftArray[i] == rightArray[j]) {
+            for (int rightArrayElement : rightArray) {
+                if (leftArrayElement == rightArrayElement) {
                     isUnique = true;
                 }
             }
             if (!isUnique) {
-                buffArray[index] = leftArray[i];//  adding elements to the first part of buffArray
+                buffArray[index] = leftArrayElement;//  adding elements to the first part of buffArray
                 index++; //number of elements in first part of array
                 //System.out.println("Outer union. Result from left array is: " + leftArray[i]);
             }
         }
-        for (int j = 0; j < rightArray.length; j++) {
+        for (int rightArrayElement : rightArray) {
             isUnique = false;
-            for (int i = 0; i < leftArray.length; i++) {
-                if (rightArray[j] == leftArray[i]) {
+            for (int leftArrayElement : leftArray) {
+                if (rightArrayElement == leftArrayElement) {
                     isUnique = true;
                 }
             }
-            if(!isUnique){
+            if (!isUnique) {
                 //System.out.println("Outer union. Result from right array is: " + rightArray[j]);
-                buffArray[index] = rightArray[j];//adding elements to the second part of buffArray
+                buffArray[index] = rightArrayElement;//adding elements to the second part of buffArray
                 index++; //number of elements in second part of array
             }
         }
-        int[]resultArray=Arrays.copyOf(buffArray,index); //  (length = index)
-        return resultArray;
+        return Arrays.copyOf(buffArray,index);
     }
 }
