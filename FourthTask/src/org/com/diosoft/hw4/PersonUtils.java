@@ -2,7 +2,7 @@ package org.com.diosoft.hw4;
 
 import java.util.Arrays;
 
-//local code review (vtegza): same comments as for ThirdTask @ 18.10.15
+//local code review (vtegza): same comments as for ThirdTask @ 18.10.15 Vitalii DONE
 public class PersonUtils {
 
     public static boolean isEqual(Person person1,Person person2) {
@@ -54,24 +54,23 @@ public class PersonUtils {
         }
         int index = 0;
         Person[] buffArray = new Person[group1.length];
-        for (int i = 0; i < group1.length; i++) {
-            for (int j = 0; j < group2.length; j++) {
-                if (group1[i] == group2[j]) {
+        for (Person leftArrayElement : group1) {
+            for (Person rightArrayElement : group2) {
+                if (leftArrayElement == rightArrayElement) {
                     boolean isUnique = true;
                     for (int k = 0; k < index; k++) {
-                        if (buffArray[k] == group1[i]) {
+                        if (buffArray[k] == leftArrayElement) {
                             isUnique = false;
                         }
                     }
                     if (isUnique) {
-                        buffArray[index] = group1[i];
+                        buffArray[index] = leftArrayElement;
                         index++;
                     }
                 }
             }
         }
-        Person[] resultArray = Arrays.copyOf(buffArray, index);
-        return resultArray;
+        return Arrays.copyOf(buffArray, index);
     }
 
     public Person[] outerUnion(Person[] group1, Person[] group2) throws MyException{
@@ -79,32 +78,31 @@ public class PersonUtils {
 
         int index = 0;
         boolean isUnique=false;
-        for (int i = 0; i < group1.length; i++) {
+        for (Person leftArrayElement : group1) {
             isUnique = false;
-            for (int j = 0; j < group2.length; j++) {
-                if (group1[i] == group2[j]) {
+            for (Person rightArrayElement : group2) {
+                if (leftArrayElement == rightArrayElement) {
                     isUnique = true;
                 }
             }
             if (!isUnique) {
-                buffArray[index] = group1[i];
+                buffArray[index] = leftArrayElement;
                 index++;
             }
         }
-        for (int j = 0; j < group2.length; j++) {
+        for (Person rightArrayElement : group2) {
             isUnique = false;
-            for (int i = 0; i < group1.length; i++) {
-                if (group2[j] == group1[i]) {
+            for (Person leftArrayElement : group1) {
+                if (rightArrayElement == leftArrayElement) {
                     isUnique = true;
                 }
             }
-            if(!isUnique){
-                buffArray[index] = group2[j];
+            if (!isUnique) {
+                buffArray[index] = rightArrayElement;
                 index++;
             }
         }
-        Person[]resultArray=Arrays.copyOf(buffArray,index); //  (length = index)
-        return resultArray;
+        return Arrays.copyOf(buffArray,index);
     }
 
 
